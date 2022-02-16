@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "The Frog",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

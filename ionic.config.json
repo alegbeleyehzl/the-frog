@@ -1,0 +1,8 @@
+{
+  "name": "The Frog",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "f83c13ff"
+}
