@@ -1,0 +1,49 @@
+<ion-content class="login">
+    <div class="holder">
+        <p class="heading">The <strong>FROG</strong></p>
+    </div>
+    <div class="container">
+        <form>
+            <ion-grid>
+                <ion-row class="input-row">
+                    <ion-col size="1" size-lg class="input-icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-lg class="input-field">
+                        <ion-item lines="none">
+                            <ion-input required="true" placeholder="Username"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="input-row">
+                    <ion-col size="1" size-lg class="input-icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-lg class="input-field">
+                        <ion-item lines="none">
+                            <app-show-hide-password>
+                                <ion-input type="password" required="true" placeholder="Password"></ion-input>
+                            </app-show-hide-password>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="forgot-password">
+                    <ion-col>
+                        <ion-router-link href="#">Forgot password?</ion-router-link>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="sign-in">
+                    <ion-col>
+                        <ion-button expand="block" shape="round">SIGN IN</ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="sign-up">
+                    <ion-col>
+                        <span>New user? </span>
+                        <ion-router-link (click)="goToRegistration()">Sign Up</ion-router-link>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </form>
+    </div>
+</ion-content>

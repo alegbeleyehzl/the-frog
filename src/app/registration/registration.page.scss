@@ -1,0 +1,74 @@
+.registration div.container {
+    height: 80vh;
+}
+
+.registration form,
+.registration div.container ion-grid {
+    height: 100%;
+}
+
+div.container ion-grid {
+    position: relative;
+}
+
+.registration div.container {
+    padding: 0 25px;
+}
+
+.input-field {
+    padding: 0px !important;
+}
+
+.input-field ion-item {
+    border-radius: 20px;
+    padding-left: 5px;
+}
+
+.sign-up {
+    margin-top: 25px;
+}
+
+.input-row {
+    border: 2px solid gray;
+    border-radius: 50px;
+    padding: 0 20px;
+    margin: 14px 0;
+}
+
+.holder {
+    position: relative;
+    width: 100%;
+    display: flex;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.holder:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #15333b;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #215c6a, #15333b);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #215c6a, #15333b);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 0 0 100% 100%/0 0 80% 80%;
+    transform: scaleX(1.5);
+}
+
+.heading {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 5px;
+    z-index: 1;
+    width: 100%;
+    color: #f5f6fa;
+    text-align: center;
+}
