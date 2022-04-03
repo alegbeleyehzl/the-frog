@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ion-list>
+		<ion-item *ngFor="let item of items" detail="true" (click)="openItem(item.url)">
+			<ion-thumbnail slot="start">
+				<img src={{item.icon}}>
+			</ion-thumbnail>
+			<ion-label class="ion-text-wrap">
+				<h2>{{ item.title }}</h2>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-content>

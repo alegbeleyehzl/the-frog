@@ -1,0 +1,50 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Profile</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+		<ion-grid>
+			<ion-row class="avatar">
+				<ion-avatar>
+					<img src="assets/icon/profile.png">
+				</ion-avatar>
+			</ion-row>
+			<ion-row class="input-row">
+				<ion-col size-lg class="input-field">
+					<ion-item lines="none">
+						<ion-input required="true" placeholder="Username" name="username" ngModel required value="{{username}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row class="input-row">
+				<ion-col size-lg class="input-field">
+					<ion-item lines="none">
+						<ion-input required="true" placeholder="First Name" name="firstname" ngModel required value="{{firstname}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row class="input-row">
+				<ion-col size-lg class="input-field">
+					<ion-item lines="none">
+						<ion-input required="true" placeholder="Last Name" name="lastname" ngModel required value="{{lastname}}"></ion-input>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row class="btn">
+				<ion-col>
+					<ion-button shape="round" type="submit" [disabled]="form.invalid">UPDATE</ion-button>
+					<ion-button shape="round" (click)="goToResetPassword()">RESET PASSWORD</ion-button>
+				</ion-col>
+			</ion-row>
+			<ion-row class="logout">
+				<ion-router-link class="logout" (click)="logout()">Logout</ion-router-link>
+			</ion-row>
+		</ion-grid>
+	</form>
+</ion-content>

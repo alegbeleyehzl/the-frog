@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome, {{user.firstname}}!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="first">
+    <div class="dissection-container ion-padding">
+      <div class="left">
+        <p>VIRTUAL LAB</p>
+        <span class="h5">FROG DISSECTION</span>
+        <ion-button class="dis-btn" shape="round" (click)="goToVirtualLab()">START</ion-button>
+      </div>
+      <div class="right">
+        <img src="assets/img/frog.svg">
+      </div>
+    </div>
+    <!-- <h6>Recent Topics</h6>
+    <ion-list lines="none">
+      <ng-container *ngFor="let topic of topics; let i = index">
+        <ion-item  *ngIf="i<=2" detail="false">
+          <ion-thumbnail slot="start">
+            <img src="assets/img/topics/{{topic.image}}">
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            <h3>{{ topic.name }}</h3>
+          </ion-label>
+          <ion-icon class="play-button" name="play-circle" (click)="openTopic(topic.id)"></ion-icon>
+        </ion-item>
+      </ng-container>
+    </ion-list> -->
+  </div>
+  <div class="second">
+    <h5>Gallery</h5>
+    <div class="container">
+      <ion-grid>
+        <ion-row>
+          <ng-container *ngFor="let image of images; let i = index">
+            <ion-col *ngIf="i<3">
+              <img class="gallery-img" src="assets/img/gallery/{{ image.filename }}" (click)="showLightbox(image.id)">
+            </ion-col>
+          </ng-container>
+        </ion-row>
+        <ion-row>
+          <ng-container *ngFor="let image of images; let i = index">
+            <ion-col *ngIf="i>=3 && i<6">
+              <img class="gallery-img" src="assets/img/gallery/{{ image.filename }}" (click)="showLightbox(image.id)">
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ion-grid>
+      <ion-router-link (click)="showLightbox()"><span class="h6 ion-padding">SEE ALL</span></ion-router-link>
+    </div>
+  </div>
+</ion-content>
+
+<div class="lightbox" id="gallery" *ngIf="!isHidden">
+  <ion-grid class="wrapper">
+    <ion-row class="close">
+      <ion-icon name="close-outline" (click)="hideLightbox()"></ion-icon>
+    </ion-row>
+    <ion-row class="slider-container">
+      <ion-col size="1">
+        <span class="slider-nav arrow-prev" (click)="slidePrev(gallerySlider,sliderWithNavigation)">
+          <div class="prev-icon-custom custon-nav" [class.disabled]="gallerySlider.isBeginningSlide"></div>
+        </span>
+      </ion-col>
+
+      <ion-col size="10">
+        <ion-slides pager="false" [options]="sliderOptions" #sliderWithNavigation
+          (ionSlideDidChange)="SlideDidChange(gallerySlider,sliderWithNavigation)">
+          <ion-slide *ngFor="let s of gallerySlider.slidesItems">
+            <img src="assets/img/gallery/{{ s.filename }}">
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+
+      <ion-col size="1">
+        <span class="slider-nav arrow-next" (click)="slideNext(gallerySlider,sliderWithNavigation)">
+          <div class="next-icon-custom custon-nav" [class.disabled]="gallerySlider.isEndSlide"></div>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</div>

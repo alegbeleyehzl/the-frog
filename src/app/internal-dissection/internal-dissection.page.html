@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Virtual Lab</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="container">
+      <div class="table">
+        <img class="frog" src="assets/img/frog-parts/{{currentFrogDisplay[0].filename}}">
+      </div>
+      <div class="description">
+        <span class="h6 title">{{title}}</span>
+        <p class="desc">{{description}}</p>
+      </div>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add-sharp"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="actionHandler(1)">
+        <img class="fab-icon" src="assets/icon/forceps.png">
+      </ion-fab-button>
+      <ion-fab-button (click)="actionHandler(2)">
+        <img class="fab-icon" src="assets/icon/scalpel.png">
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

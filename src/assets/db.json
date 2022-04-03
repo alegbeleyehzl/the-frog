@@ -1,0 +1,39 @@
+{
+    "database": "the_frog_db",
+    "version": 1,
+    "encrypted": false,
+    "mode": "full",
+    "tables": [
+        {
+            "name": "user",
+            "schema": [
+                { "column": "id", "value": "INTEGER PRIMARY KEY NOT NULL" },
+                { "column": "firstname", "value": "TEXT NOT NULL" },
+                { "column": "lastname", "value": "TEXT NOT NULL" },
+                { "column": "username", "value": "TEXT NOT NULL" },
+                { "column": "password", "value": "TEXT NOT NULL" },
+                { "column": "is_logged_in", "value": "INTEGER" },
+                { "column": "last_modified", "value": "INTEGER DEFAULT (strftime('%s', 'now'))" }
+            ],
+            "values": [
+                [1, "System", "Administrator", "sysadmin", "admin", 0, 1587310030]
+            ]
+        },
+        {
+            "name": "score",
+            "schema": [
+                { "column": "id", "value": "INTEGER PRIMARY KEY NOT NULL" },
+                { "column": "type", "value": "INTEGER" },
+                { "column": "assessment_type", "value": "INTEGER" },
+                { "column": "topic_id", "value": "INTEGER" },
+                { "column": "total_items", "value": "INTEGER" },
+                { "column": "score", "value": "INTEGER" },
+                { "column": "status", "value": "INTEGER" }
+            ],
+            "values": [
+                [1, 2, 1, "", 5, 0, 0],
+                [2, 2, 2, "", 5, 0, 0]
+            ]
+        }
+    ]
+  }

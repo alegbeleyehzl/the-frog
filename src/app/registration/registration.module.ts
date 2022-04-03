@@ -16,7 +16,7 @@ import { ShowHidePasswordComponent } from '../show-hide-password/show-hide-passw
     IonicModule,
     RegistrationPageRoutingModule
   ],
-  exports:[ShowHidePasswordComponent],
+  exports: [ShowHidePasswordComponent],
   declarations: [RegistrationPage, ShowHidePasswordComponent]
 })
 export class RegistrationPageModule {}

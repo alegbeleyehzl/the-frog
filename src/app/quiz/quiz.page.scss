@@ -1,0 +1,36 @@
+ion-item {
+    --ion-background-color: #1F647680;
+    --color: white !important;
+    border-radius: 16px;
+    margin: 10px 0;
+    font-size: 20px !important;
+}
+
+ion-item.item-radio-checked {
+    --ion-background-color: #1F6476 !important;
+}
+
+ion-radio {
+    --color: white !important;
+    --color-checked: white !important;
+}
+
+div.question-container div {
+    margin: 10px 0;
+}
+
+#countdown-number { padding-right: 20px;}
+
+@media (prefers-color-scheme: dark) {
+    ion-item {
+        --ion-item-background: #1F647680;
+        --color: white !important;
+        border-radius: 16px;
+        margin: 10px 0;
+        font-size: 20px !important;
+    }
+
+    ion-list {
+        background: transparent;
+    }
+}

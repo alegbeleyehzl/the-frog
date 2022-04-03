@@ -1,0 +1,142 @@
+ion-item {
+    --ion-background-color: #e8eff1 !important;
+    border-radius: 7px;
+    margin: 20px 0;
+}
+
+ion-icon.play-button {
+    font-size: 40px;
+    color: var(--ion-color-primary);
+}
+
+ion-icon.play-button:hover{
+    color: var(--ion-color-secondary);
+    filter: drop-shadow( 0px 1px 1px rgba(41, 130, 154, 0.7));
+}
+
+.container {
+    background-color: #8fb1ba;
+    border-radius: 7px;
+}
+
+img.gallery-img { 
+    border-radius: 7px; 
+    height: 90px;
+    width: 90px;
+    object-fit: cover;
+}
+
+ion-router-link {
+    text-align: right;
+}
+
+div.second {
+    margin-top: 10px;
+}
+
+// Lightbox
+div.lightbox {
+    background-color: #000000ab;
+    height: 100vh;
+    width: 100vw;
+    z-index: 999;
+    position: absolute;
+    // opacity: 0.5;
+}
+
+ion-slides {
+    height: 100%;
+  }
+
+
+.custon-nav{
+    height: 48px;
+    width: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.prev-icon-custom{
+    background: url(/assets/icon/nav-icon.png) no-repeat scroll 0px 0px;
+}
+.prev-icon-custom.disabled{
+    opacity: 0.4;
+    cursor: default;
+}
+.next-icon-custom{
+    background: url(/assets/icon/nav-icon.png) no-repeat scroll -32px 0px;
+}
+.next-icon-custom.disabled{
+    opacity: 0.4;
+    cursor: default;
+}
+.slider-nav{
+    ion-icon{
+        height: 100%;
+    }
+}
+
+.slide-text{
+    position: absolute;
+    color: white;
+    bottom: 30px;
+}
+
+.wrapper {
+    height: 100vh;
+}
+
+.slider-container {
+    margin: 20vh 0 0 0;
+}
+
+.close ion-icon {
+    font-size: 40px;
+    color: white;
+}
+
+ion-row.close {
+    justify-content: flex-end;
+}
+
+.dissection-container {
+    height: 25vh;
+    border-radius: 8px;
+    background: rgb(41,130,154);
+    background: linear-gradient(90deg, rgba(41,130,154,1) 50%, rgba(31,100,118,1) 100%);
+    display: flex;
+}
+
+.dissection-container .left, .dissection-container .right {
+    width: 50%;
+}
+
+.dissection-container .right {
+    align-self: center;
+}
+
+.dissection-container .left p{
+    margin: 0px;
+    font-size: 12px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+ion-button {
+    --background: #1f6476 !important;
+    color: white;
+}
+
+.dissection-container .left .h5{
+    color: white !important;
+}
+
+.h6 {
+    float: right;
+}
+
+@media (prefers-color-scheme: dark) {
+    h5 { color: white !important; }   
+}

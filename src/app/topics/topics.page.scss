@@ -1,0 +1,28 @@
+ion-item {
+    --ion-background-color: #e8eff1 !important;
+    border-radius: 7px;
+    margin: 20px 0;
+}
+
+ion-icon.play-button {
+    font-size: 40px;
+    color: var(--ion-color-primary);
+}
+
+ion-icon.play-button:hover{
+    color: var(--ion-color-secondary);
+    filter: drop-shadow( 0px 1px 1px rgba(41, 130, 154, 0.7));
+}
+
+.status {
+    background: lightslategrey;
+    width: fit-content;
+    padding: 1px 12px;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+}
+
+p.status.complete{
+    background-color: #1b4853 !important;
+}

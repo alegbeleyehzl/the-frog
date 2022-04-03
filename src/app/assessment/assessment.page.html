@@ -1,0 +1,57 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Assessment</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ion-accordion-group>
+		<ion-accordion value="pretest" toggle-icon="chevron-forward-outline">
+			<ion-item slot="header">
+				<ion-thumbnail slot="start">
+					<img src="assets/icon/test.png">
+				</ion-thumbnail>
+				<ion-label class="ion-text-wrap">
+					<h2>Pre-test</h2>
+				</ion-label>
+			</ion-item>
+			<ion-list slot="content">
+				<ion-item >
+					<ion-col>
+						<ion-row>
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </span>
+						</ion-row>
+						<ion-row class="test-btn">
+							<ion-button shape="round" (click)="openTest(1)">Take Test</ion-button>
+						</ion-row>
+					</ion-col>
+				</ion-item>
+			</ion-list>
+		</ion-accordion>
+		<ion-accordion value="posttest" toggle-icon="chevron-forward-outline">
+			<ion-item slot="header">
+				<ion-thumbnail slot="start">
+					<img src="assets/icon/test.png">
+				</ion-thumbnail>
+				<ion-label class="ion-text-wrap">
+					<h2>Post-test</h2>
+				</ion-label>
+			</ion-item>
+			<ion-list slot="content">
+				<ion-item >
+					<ion-col>
+						<ion-row>
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </span>
+						</ion-row>
+						<ion-row class="test-btn">
+							<ion-button shape="round" (click)="openTest(2)">Take Test</ion-button>
+						</ion-row>
+					</ion-col>
+				</ion-item>
+			</ion-list>
+		</ion-accordion>
+	</ion-accordion-group>
+</ion-content>

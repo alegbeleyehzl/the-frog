@@ -1,0 +1,32 @@
+<ion-content class="ion-padding">
+  <div class="score-img ion-padding">
+    <img src="assets/img/{{image}}" alt="The Frog Logo">
+  </div>
+  <div class="content">
+    <h5>{{msg}}</h5>
+    <p>YOUR SCORE</p>
+    <span class="h3">{{score}}</span><span class="h4">/{{totalItems}}</span>
+    <div *ngIf="percentage>0">
+      <ion-row class="btn">
+        <ion-col>
+            <ion-button shape="round" (click)="backToTopics()">
+              FINISH
+            </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    
+    <div *ngIf="percentage<50">
+      <ion-row class="ion-padding">
+        <ion-col>
+            <ion-button shape="round" (click)="goBackToTopic()">
+              REVIEW
+            </ion-button>
+            <ion-button shape="round" (click)="restartQuiz()">
+              TRY AGAIN
+            </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

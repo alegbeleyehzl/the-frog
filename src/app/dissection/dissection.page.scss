@@ -1,0 +1,33 @@
+ion-content {
+    --ion-background-color: var(--ion-toolbar-background) !important;
+    --ion-text-color: white;
+}
+
+img.fab-icon {
+    height: 18px;
+}
+
+div.table {
+    height: 60vh;
+    background-color: #D5ECF2;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+img.frog {
+    height: 100%;
+}
+
+div.container div {
+    margin: 10px;
+}
+
+span.title { color: white !important; }
+
+@media (prefers-color-scheme: dark) {
+    ion-fab-list ion-fab-button {
+        --background: white;
+        --color: black !important;
+    }
+}

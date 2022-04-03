@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button (click)="goBackToTopics()"></ion-back-button>
+		</ion-buttons>
+		<ion-title>{{ selectedTopic.name }}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <div class="img-holder">
+      <img src="assets/img/topics/{{selectedTopic.image}}" alt="{{selectedTopic.name}}" class="featured-img">
+  </div>
+  <div class="topic ion-padding">
+    <div class="topic-title"><strong>{{ selectedTopic.name }}</strong></div>
+    <div [innerHTML]="selectedTopic.content" class="topic-content"></div>
+    <ion-row class="btn">
+        <ion-col>
+            <ion-button shape="round" (click)="openQuiz(selectedTopic.id)">TAKE QUIZ</ion-button>
+        </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

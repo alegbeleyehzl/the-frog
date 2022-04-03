@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ testType }}</ion-title>
+    <div *ngIf="type>1" id="countdown-number" slot="end"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="quizItems.length > 0">
+    <div class="question-container">
+      <div class="label">
+        <span>Question {{currentItemNumber+1}}/{{quizItems.length}}</span>
+      </div>
+      <div class="question">
+        <span><h6>{{currentQuizItem.question}}</h6></span>
+      </div>
+    </div>
+    <div>
+      <ion-list lines="none">
+        <ion-radio-group [(ngModel)]="selectedAnswer">
+          <ion-item *ngFor="let choice of currentQuizItem['choices']; let i=index;" detail="false">
+            <ion-label>{{choice}}</ion-label>
+            <ion-radio slot="start" value={{i}}></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <ion-row class="btn">
+        <ion-col>
+            <ion-button shape="round" (click)="nextQuestion()">
+              CONTINUE
+              <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

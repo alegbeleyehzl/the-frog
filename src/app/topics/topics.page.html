@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Topics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ion-list lines="none">
+    <ng-container *ngFor="let topic of topics; let i = index;" >
+      <ion-item detail="false" [disabled]="i>0 && !topics[i-1].status">
+        <ion-thumbnail slot="start">
+          <img src="assets/img/topics/{{topic.image}}">
+        </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+          <h3>{{ topic.name }}</h3>
+          <p *ngIf="topic.status" class="status complete">Completed</p>
+          <p *ngIf="!topic.status" class="status pending">Pending</p>
+        </ion-label>
+        <ion-icon class="play-button" name="play-circle" (click)="openTopic(topic.id)"></ion-icon>
+      </ion-item>
+    </ng-container>
+	</ion-list>
+</ion-content>
