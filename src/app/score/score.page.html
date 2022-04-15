@@ -6,27 +6,42 @@
     <h5>{{msg}}</h5>
     <p>YOUR SCORE</p>
     <span class="h3">{{score}}</span><span class="h4">/{{totalItems}}</span>
+
     <div *ngIf="percentage>0">
-      <ion-row class="btn">
+      <!-- QUIZ & POST-TEST -->
+      <ion-row class="btn" *ngIf="!hideComplete">
         <ion-col>
-            <ion-button shape="round" (click)="backToTopics()">
-              FINISH
-            </ion-button>
+            <ion-button shape="round" (click)="completeTopic()">FINISH</ion-button>
+        </ion-col>
+      </ion-row>
+      <!-- PRE-TEST -->
+      <ion-row class="btn" *ngIf="hideComplete">
+        <ion-col>
+            <ion-button shape="round" (click)="backToAssessment()">BACK</ion-button>
         </ion-col>
       </ion-row>
     </div>
-    
+
     <div *ngIf="percentage<50">
-      <ion-row class="ion-padding">
+      <!-- QUIZ BUTTONS -->
+      <ion-row class="ion-padding" *ngIf="type<2">
         <ion-col>
-            <ion-button shape="round" (click)="goBackToTopic()">
-              REVIEW
-            </ion-button>
-            <ion-button shape="round" (click)="restartQuiz()">
-              TRY AGAIN
-            </ion-button>
+            <ion-button shape="round" (click)="goBackToTopic()">REVIEW</ion-button>
+            <ion-button shape="round" (click)="restartQuiz()">TRY AGAIN</ion-button>
         </ion-col>
       </ion-row>
+      <!-- ASSESSMENT BUTTONS -->
+      <ion-row class="ion-padding" *ngIf="type>1">
+        <ion-col *ngIf="assessmentType>1">
+            <ion-button shape="round" (click)="goBackToTopic()">REVIEW</ion-button>
+            <ion-button shape="round" (click)="restartQuiz()">TRY AGAIN</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="student-name">
+      <p>{{user.lastname}}, {{user.firstname}}</p>
+      <p class="retakes" *ngIf="type > 1">Retakes: {{retakes}}</p>
     </div>
   </div>
 </ion-content>

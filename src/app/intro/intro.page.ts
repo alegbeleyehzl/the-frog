@@ -31,4 +31,9 @@ export class IntroPage implements OnInit {
     };
     this.navCtrl.navigateForward(['quiz'], navigationExtras);
   }
+
+  async proceedToDashboard() {
+    await Storage.set({key: INTRO_KEY, value: 'true'});
+    this.router.navigateByUrl('/home/dashboard', { replaceUrl:true });
+  }
 }

@@ -11,11 +11,17 @@
   <div class="ion-padding">
     <div class="container">
       <div class="table">
-        <img class="frog" src="assets/img/frog-parts/{{currentFrogDisplay[0].filename}}">
+        <ion-slides pager="false" [options]="sliderOptions" #sliderWithNavigation
+          (ionSlideDidChange)="SlideDidChange(gallerySlider,sliderWithNavigation)">
+          <ion-slide>
+            <img class="frog" src="assets/img/frog-parts/{{currentFrogDisplay[0].filename}}">
+          </ion-slide>
+        </ion-slides>
       </div>
       <div class="description">
         <span class="h6 title">{{title}}</span>
-        <p class="desc">{{description}}</p>
+        <div [innerHTML]="description" class="organ-desc"></div>
+        <!-- <p class="desc" *ngIf="title != Instructions">{{description}}</p> -->
       </div>
     </div>
   </div>

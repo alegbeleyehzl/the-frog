@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AlertController, IonSlides, NavController } from '@ionic/angular';
 import { Frog } from '../model/frog';
 import { FrogService } from '../service/frog.service';
+import { Image } from '../model/image';
 
 @Component({
   selector: 'app-internal-dissection',
@@ -15,8 +16,24 @@ export class InternalDissectionPage implements OnInit {
   public title              : String;
   public description        : String;
   public defaultTitle        = 'Instructions';
-  public defaultDescription  = 'Select an action from the + button. To lift and emphasize an organ, click on the [forceps] and [scalpel] to remove the organ from the Frog.'
+  public defaultDescription  = '<div><div>Select an action from the + button.</div><ul><li>Pinch to zoom the image.</li><li>To lift and emphasize an organ, click on the <strong>forceps</strong>.</li><li>Click the <strong>scalpel</strong>&nbsp;to remove the organ from the Frog.</li></ul></div>'
 
+  public images: Array<Image>;
+  public user = [];
+
+  @ViewChild('sliderWithNavigation', { static: false }) sliderWithNavigation: IonSlides;
+
+  isHidden = true;
+  gallerySlider: any;
+
+  sliderOptions = {
+    initialSlide    : 0,
+    slidesPerView   : 1,
+    loop            : false,
+    centeredSlides  : true,
+    spaceBetween    : 20
+  };
+  
   constructor(
     private navCtrl: NavController,
     private frogService: FrogService,
@@ -28,6 +45,12 @@ export class InternalDissectionPage implements OnInit {
     if( this.frogOrgans ) this.currentFrogDisplay = this.frogOrgans.filter( organ => organ.id == this.actionCounter );
     this.title = this.defaultTitle;
     this.description = this.defaultDescription;
+
+    this.gallerySlider = {
+      isBeginningSlide  : true,
+      isEndSlide        : false,
+      slidesItems       : this.images
+    };
   }
 
   actionHandler( action ){

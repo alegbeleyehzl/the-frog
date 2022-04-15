@@ -29,6 +29,8 @@ img.featured-img {
     // height: 27vh;
     border: 5px solid #1F64766E;
     border-radius: 5px;
+    // height: 40vh;
+    background: white;
 }
 
 ion-content {
@@ -42,11 +44,19 @@ ion-button {
     font-weight: bold;
 }
 
+ion-button span {
+    font-weight: bold !important;
+}
+
 p, span { font-weight: normal; }
 
 .topic-content strong {
     color: #8EB0B9 !important;
     letter-spacing: 0.5px !important;
+}
+
+.topic-content {
+    text-align: justify;
 }
 
 a {

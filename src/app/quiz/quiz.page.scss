@@ -21,6 +21,8 @@ div.question-container div {
 
 #countdown-number { padding-right: 20px;}
 
+p.choice { font-size: 16px !important; }
+
 @media (prefers-color-scheme: dark) {
     ion-item {
         --ion-item-background: #1F647680;

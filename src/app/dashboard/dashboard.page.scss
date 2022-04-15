@@ -19,11 +19,14 @@ ion-icon.play-button:hover{
     border-radius: 7px;
 }
 
-img.gallery-img { 
-    border-radius: 7px; 
+img.gallery-img {
+    border-radius: 7px;
     height: 90px;
     width: 90px;
     object-fit: cover;
+    filter: drop-shadow( 0px 1px 1px #000000a3);
+    background: #000000a3;
+    /* filter: drop-shadow( 0px 1px 1px rgba(41, 130, 154, 0.7)); */
 }
 
 ion-router-link {
@@ -135,6 +138,15 @@ ion-button {
 
 .h6 {
     float: right;
+}
+
+p.name {
+    font-size: 10px;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 15px !important;
+    text-align: center;
+    color: #1F6476;
 }
 
 @media (prefers-color-scheme: dark) {

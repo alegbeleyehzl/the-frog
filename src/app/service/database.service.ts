@@ -68,6 +68,9 @@ export class DatabaseService {
         await Storage.set({ key: DB_NAME_KEY, value: this.dbName });
         await CapacitorSQLite.importFromJson({ jsonstring });
         await Storage.set({ key: DB_SETUP_KEY, value: '1' });
+
+        await CapacitorSQLite.createConnection({ database: this.dbName });
+        await CapacitorSQLite.open({ database: this.dbName });
  
         // Your potential logic to detect offline changes later
         if (!update) {
@@ -80,39 +83,22 @@ export class DatabaseService {
     });
   }
 
-  
-   
-  // async getProductById(id) {
-  //   const statement = `SELECT * FROM products LEFT JOIN vendors ON vendors.id=products.vendorid WHERE products.id=${id} ;`;
-  //   return (await CapacitorSQLite.query({ statement, values: [] })).values[0];
-  // }
-   
-  // getDatabaseExport(mode) {
-  //   return CapacitorSQLite.exportToJson({ jsonexportmode: mode });
-  // }
-   
-  addDummyProduct(name) {
-    const randomValue = Math.floor(Math.random() * 100) + 1;
-    const randomVendor = Math.floor(Math.random() * 3) + 1
-    const statement = `INSERT INTO products (name, currency, value, vendorid) VALUES ('${name}','EUR', ${randomValue}, ${randomVendor});`;
-    const dbName = this.dbName;
-    return CapacitorSQLite.execute({ database: dbName, statements: statement });
-  }
-   
-  // deleteProduct(productId) {
-  //   const statement = `DELETE FROM products WHERE id = ${productId};`;
-  //   return CapacitorSQLite.execute({ statements: statement });
-  // }
-   
-  // For testing only..
-  async deleteDatabase() {
-    const dbName = await Storage.get({ key: DB_NAME_KEY });
-    await Storage.set({ key: DB_SETUP_KEY, value: null });
-    return CapacitorSQLite.deleteDatabase({ database: dbName.value });
-  }
-
   /** GETTERS **/
   getUsers(){
+    return this.dbReady.pipe(
+      switchMap(isReady => {
+        if (!isReady) {
+          return of({ values: [] });
+        } else {
+          const statement = 'SELECT id, username FROM user;';
+          const dbName = this.dbName;
+          return from(CapacitorSQLite.query({ database: dbName, statement, values: [] }));
+        }
+      })
+    )
+  }
+  
+  getUser(username){
     return this.dbReady.pipe(
       switchMap(isReady => {
         if (!isReady) {
@@ -125,9 +111,33 @@ export class DatabaseService {
       })
     )
   }
-  
-  getUser(username){
 
+  getTopics( id ){
+    return this.dbReady.pipe(
+      switchMap(isReady => {
+        if (!isReady) {
+          return of({ values: [] });
+        } else {
+          const statement = `SELECT * FROM utopics WHERE userId = ${id};`;
+          const dbName = this.dbName;
+          return from(CapacitorSQLite.query({ database: dbName, statement, values: [] }));
+        }
+      })
+    )
+  }
+
+  getAssessments(id){
+    return this.dbReady.pipe(
+      switchMap(isReady => {
+        if (!isReady) {
+          return of({ values: [] });
+        } else {
+          const statement = `SELECT * FROM uassessment WHERE userId = ${id};`;
+          const dbName = this.dbName;
+          return from(CapacitorSQLite.query({ database: dbName, statement, values: [] }));
+        }
+      })
+    )
   }
 
   /** SAVING **/
@@ -145,6 +155,30 @@ export class DatabaseService {
 
   updatePassword( id, params ){
     const statement = `UPDATE user SET password = '${params.password}' WHERE id = ${id};`;
+    const dbName = this.dbName;
+    return CapacitorSQLite.execute({ database: dbName, statements: statement });
+  }
+
+  updateUTopic( params: { status: number; score: number; rating: number; userId: number; topicId: number;} ){
+    const statement = `UPDATE utopics SET status = '${params.status}', score = '${params.score}', rating = '${params.rating}' WHERE userId = ${params.userId} and topicId = ${params.topicId};`;
+    const dbName = this.dbName;
+    return CapacitorSQLite.execute({ database: dbName, statements: statement });
+  }
+
+  updateUAssessment( params: { userId: any; assessmentType?: number; score: any; rating: any; retakes?: number; status: any; topicId?: any; } ){
+    const statement = `UPDATE uassessment SET status = '${params.status}', score = '${params.score}', rating = '${params.rating}', retakes = '${params.retakes}' WHERE userId = ${params.userId} and assessmentType = ${params.assessmentType};`;
+    const dbName = this.dbName;
+    return CapacitorSQLite.execute({ database: dbName, statements: statement });
+  }
+
+  saveUTopic( params ){
+    const statement = `INSERT INTO utopics (topicId, status, quizId, score, rating, userId) VALUES ('${params.topicId}','${params.status}','${params.quizId}', '${params.score}', '${params.rating}', '${params.userId}');`;
+    const dbName = this.dbName;
+    return CapacitorSQLite.execute({ database: dbName, statements: statement });
+  }
+
+  saveUAssessment( params ){
+    const statement = `INSERT INTO uassessment (assessmentType, status, score, rating, userId, retakes) VALUES ('${params.assessmentType}','${params.status}', '${params.score}', '${params.rating}', '${params.userId}', '${params.retakes}');`;
     const dbName = this.dbName;
     return CapacitorSQLite.execute({ database: dbName, statements: statement });
   }

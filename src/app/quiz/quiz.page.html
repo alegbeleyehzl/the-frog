@@ -19,7 +19,8 @@
       <ion-list lines="none">
         <ion-radio-group [(ngModel)]="selectedAnswer">
           <ion-item *ngFor="let choice of currentQuizItem['choices']; let i=index;" detail="false">
-            <ion-label>{{choice}}</ion-label>
+            <!-- <ion-label>{{choice}}</ion-label> -->
+            <p class="choice">{{choice}}</p>
             <ion-radio slot="start" value={{i}}></ion-radio>
           </ion-item>
         </ion-radio-group>

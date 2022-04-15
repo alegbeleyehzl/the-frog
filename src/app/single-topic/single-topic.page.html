@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content >
-  <div class="img-holder">
+  <div class="img-holder" *ngIf="selectedTopic.image != ''">
       <img src="assets/img/topics/{{selectedTopic.image}}" alt="{{selectedTopic.name}}" class="featured-img">
   </div>
   <div class="topic ion-padding">
@@ -16,7 +16,10 @@
     <div [innerHTML]="selectedTopic.content" class="topic-content"></div>
     <ion-row class="btn">
         <ion-col>
-            <ion-button shape="round" (click)="openQuiz(selectedTopic.id)">TAKE QUIZ</ion-button>
+            <ion-button shape="round" (click)="openQuiz(selectedTopic.id)">
+              <span *ngIf="!selectedTopic.status">TAKE QUIZ</span>
+              <span *ngIf="selectedTopic.status">RE-TAKE QUIZ</span>
+            </ion-button>
         </ion-col>
     </ion-row>
   </div>

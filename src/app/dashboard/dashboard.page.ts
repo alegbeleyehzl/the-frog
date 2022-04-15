@@ -40,13 +40,6 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Fetch current user details
-    this.databaseService.checkCurrentUser().subscribe(res => {
-      if( res['values'].length > 0 ) {
-        this.user = res['values']['0'];
-      }
-    });
-
     this.topics = this.topicService.getTopics();
     this.images = this.galleryService.getGallery();
 
@@ -56,6 +49,15 @@ export class DashboardPage implements OnInit {
       slidesItems       : this.images
     };
 
+  }
+
+  ionViewDidEnter(){
+    // Fetch current user details
+    this.databaseService.checkCurrentUser().subscribe(res => {
+      if( res['values'].length > 0 ) {
+        this.user = res['values']['0'];
+      }
+    });
   }
 
   public openTopic(topicId: number): void {

@@ -3,21 +3,34 @@
  
     <!-- Slide 1 -->
     <ion-slide>
-      <ion-text color="light">
-        <img src="https://i1.wp.com/ionicacademy.com/wp-content/uploads/2019/10/async-code-course.png">
-        <h1>Hey there!</h1>
-        <p>This is an epic app because...</p>
-        <ion-button (click)="next()" fill="outline" color="light">Next</ion-button>
+      <ion-text class="ion-padding">
+        <img class="intro-img" src="/assets/img/learn.svg">
+        <h5>WELCOME TO THE FROG!</h5>
+        <p>THE FROG application features virtual dissection, pre-test and post-test, review quizzes, and lessons to better understand the topic all about the frog.</p>
+        <ion-button fill="outline" color="primary" (click)="next()">NEXT</ion-button>
       </ion-text>
     </ion-slide>
  
     <!-- Slide 2 -->
     <ion-slide>
-      <ion-text color="light">
-        <img src="https://i1.wp.com/ionicacademy.com/wp-content/uploads/2020/06/ionic-everywhere-course.png">
-        <h1>It's Ionic!</h1>
-        <p>... it shows all the basics you need!</p>
-        <ion-button (click)="start()" fill="outline" color="light">Start</ion-button>
+      <ion-text class="ion-padding">
+        <img class="intro-img" src="/assets/img/mobile-topics.svg">
+        <h5>LEARN. ANYWHERE. ANYTIME.</h5>
+        <p>Click 'NEXT' to proceed.</p>
+        <ion-button fill="outline" color="primary" (click)="next()">NEXT</ion-button>
+      </ion-text>
+    </ion-slide>
+
+    <!-- Slide 3 -->
+    <ion-slide>
+      <ion-text class="ion-padding">
+        <img class="intro-img" src="/assets/img/assess.svg">
+        <h5>PRE-TEST</h5>
+        <p>Take the pre-test items to assess your knowledge all about the frog and before exploring the content of the application.</p>
+        <!-- <ion-row>
+          <ion-button fill="outline" (click)="proceedToDashboard()" color="primary">PROCEED TO DASHBOARD</ion-button>
+        </ion-row> -->
+        <ion-button fill="solid" (click)="start()" color="primary">TAKE PRE-TEST</ion-button>
       </ion-text>
     </ion-slide>
  

@@ -5,14 +5,14 @@ import { AutoLoginGuard } from './guards/auto-login.guard';
 import { IntroGuard } from './guards/intro.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
-  },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+  // },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
-    canLoad: [IntroGuard, AutoLoginGuard] // Check if we should show the introduction or forward to inside
+    canLoad: [AutoLoginGuard] // Check if we should show the introduction or forward to inside
   },
   {
     path: 'registration',
@@ -25,31 +25,33 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canLoad: [AuthGuard] // Secure all child pages
+    canLoad: [IntroGuard, AuthGuard] // Secure all child pages
+    
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule),
+    // canLoad: [IntroGuard] // Check if we should show the introduction or forward to 
   },
   {
     path: 'topics',
-    loadChildren: () => import('./topics/topics.module').then( m => m.TopicsPageModule)
+    loadChildren: () => import('./topics/topics.module').then( m => m.TopicsPageModule),
   },
   {
     path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule),
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
   },
   {
     path: 'assessment',
-    loadChildren: () => import('./assessment/assessment.module').then( m => m.AssessmentPageModule)
+    loadChildren: () => import('./assessment/assessment.module').then( m => m.AssessmentPageModule),
   },
   {
     path: 'about',
-    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule),
   },
   {
     path: 'forgot-password',
@@ -57,23 +59,28 @@ const routes: Routes = [
   },
   {
     path: 'single-topic',
-    loadChildren: () => import('./single-topic/single-topic.module').then( m => m.SingleTopicPageModule)
+    loadChildren: () => import('./single-topic/single-topic.module').then( m => m.SingleTopicPageModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: 'quiz',
-    loadChildren: () => import('./quiz/quiz.module').then( m => m.QuizPageModule)
+    loadChildren: () => import('./quiz/quiz.module').then( m => m.QuizPageModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: 'score',
-    loadChildren: () => import('./score/score.module').then( m => m.ScorePageModule)
+    loadChildren: () => import('./score/score.module').then( m => m.ScorePageModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: 'dissection',
-    loadChildren: () => import('./dissection/dissection.module').then( m => m.DissectionPageModule)
+    loadChildren: () => import('./dissection/dissection.module').then( m => m.DissectionPageModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: 'internal-dissection',
-    loadChildren: () => import('./internal-dissection/internal-dissection.module').then( m => m.InternalDissectionPageModule)
+    loadChildren: () => import('./internal-dissection/internal-dissection.module').then( m => m.InternalDissectionPageModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -84,6 +91,12 @@ const routes: Routes = [
     path: 'intro',
     loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule)
   }
+  // ,{
+  //   path: 'home/dashboard',
+  //   redirectTo: '/home/dashboard',
+  //   canLoad: [IntroGuard] // Check if we should show the introduction or forward to 
+  //   // pathMatch: 'full'
+  // }
 
 
 ];

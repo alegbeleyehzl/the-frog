@@ -5,9 +5,11 @@ import { BehaviorSubject, from, Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { DatabaseService } from '../service/database.service';
 import { INTRO_KEY } from 'src/app/guards/intro.guard';
+import { Router } from '@angular/router';
  
  
 const TOKEN_KEY = 'my-token';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,11 @@ export class AuthenticationService {
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
   token = '';
  
-  constructor(private http: HttpClient, private databaseService: DatabaseService,) {
+  constructor(
+    private http: HttpClient, 
+    private databaseService: DatabaseService,
+    private router: Router
+    ) {
     this.loadToken();
   }
 
@@ -34,20 +40,20 @@ export class AuthenticationService {
 
   login(user){
     this.databaseService.loginUser(user['id']); // Update logged_in tagging
-    Storage.set({key: TOKEN_KEY, value: user['is_logged_in']});
+    Storage.set({key: TOKEN_KEY, value: 'true'});
     this.isAuthenticated.next(true);
   }
+  
  
-  logout(): Promise<void> {
-    this.databaseService.checkCurrentUser().subscribe(async res => {
+  logout() {
+    this.databaseService.checkCurrentUser().subscribe(res => {
       if( res['values'].length > 0 ) {
         this.databaseService.logoutUser(res['values']['0']['id']); // Update logged_in tagging
-        await Storage.set({key: INTRO_KEY, value: 'false'});
+        // Storage.set({key: INTRO_KEY, value: 'false'});
+        Storage.remove({key: TOKEN_KEY});
         this.isAuthenticated.next(false);
-      } else {
-        return false;
+        this.router.navigateByUrl('login', { replaceUrl: true });
       }
     });
-    return Storage.remove({key: TOKEN_KEY});
   }
 }

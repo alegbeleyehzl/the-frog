@@ -1,9 +1,21 @@
 ion-content {
-    --background: #0081ca;
+    --background: white;
 }
  
 ion-slides {
     height: 100%;
-    --bullet-background-active: #fff;
+    --bullet-background-active: var(--ion-color-primary);
     --bullet-background: #000;
 }
+
+img.intro-img {
+    padding: 50px;
+    max-height: 45vh;
+}
+
+ion-row {
+    justify-content: center;
+    padding: 10px;
+}
+
+.link { color: var(--ion-color-primary) !important; }

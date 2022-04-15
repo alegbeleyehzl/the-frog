@@ -26,6 +26,7 @@ export class SingleTopicPage implements OnInit {
     
     // Fetch topic details from the model
     this.selectedTopic = this.topicService.getTopic( this.topicId );
+    console.log( this.selectedTopic );
   }
 
   openQuiz( topicId ){

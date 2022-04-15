@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Frog } from '../model/frog';
 import { FrogService } from '../service/frog.service';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, IonSlides, NavController } from '@ionic/angular';
+import { Image } from '../model/image';
 
 @Component({
   selector: 'app-dissection',
@@ -13,6 +14,19 @@ export class DissectionPage implements OnInit {
   public frogOrgans: Array<Frog>;
   public currentFrogDisplay: Array<Frog>;
   public actionCounter: number = 1;
+  public images: Array<Image>;
+  @ViewChild('sliderWithNavigation', { static: false }) sliderWithNavigation: IonSlides;
+
+  isHidden = true;
+  gallerySlider: any;
+
+  sliderOptions = {
+    initialSlide    : 0,
+    slidesPerView   : 1,
+    loop            : false,
+    centeredSlides  : true,
+    spaceBetween    : 20
+  };
 
   constructor(
     private frogService: FrogService,
@@ -23,6 +37,12 @@ export class DissectionPage implements OnInit {
   ngOnInit() {
     this.frogDissectionParts = this.frogService.getFrogDissectionParts();
     if( this.frogDissectionParts ) this.currentFrogDisplay = this.frogDissectionParts.filter( part => part.id == this.actionCounter );
+
+    this.gallerySlider = {
+      isBeginningSlide  : true,
+      isEndSlide        : false,
+      slidesItems       : this.images
+    };
   }
 
   actionHandler(action){

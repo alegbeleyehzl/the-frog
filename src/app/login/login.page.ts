@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController, Platform, ToastController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../service/authentication.service';
 import { DatabaseService } from '../service/database.service';
 
@@ -10,6 +11,7 @@ import { DatabaseService } from '../service/database.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  private subscription = new Subscription();
   user = [];
 
   constructor( 
@@ -20,16 +22,19 @@ export class LoginPage implements OnInit {
     private authService: AuthenticationService,
     private alertController: AlertController,
     private router: Router,
+    private platform: Platform,
   ) { }
 
-  ngOnInit() {
-    this.databaseService.checkCurrentUser().subscribe(res => {
-      if( res['values'].length > 0 ) {
-        this.user = res['values']['0'];
-        
-        this.navCtrl.navigateForward('home/dashboard');
-      }
+  ngOnInit() {}
+
+  ionViewDidEnter() {
+    this.subscription = this.platform.backButton.subscribeWithPriority(9999, () => {
+      // this prevents default back button behaviour
     });
+  }
+  
+  ionViewWillLeave() {
+    this.subscription.unsubscribe();
   }
 
   async onSubmit( form ) {
@@ -47,17 +52,6 @@ export class LoginPage implements OnInit {
       } 
     });
   }
-  
-  // onSubmit( form ){
-  //   this.databaseService.verifyUser(form.value).subscribe(res => {
-  //     if( res['values'].length > 0 ) {
-  //       this.databaseService.loginUser(res['values']['0']['id']); // Update logged_in tagging
-  //       this.navCtrl.navigateForward('home/dashboard');
-  //     } else {
-  //       this.showToast('Incorrect username or password. Please try again.');
-  //     } 
-  //   });
-  // }
 
   showToast(msg) {
     this.toastController.create({

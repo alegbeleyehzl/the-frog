@@ -24,6 +24,10 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+  }
+
+  ionViewDidEnter(){
     this.getUser();
   }
 
@@ -73,7 +77,8 @@ export class ProfilePage implements OnInit {
   }
 
   async logout() {
-    await this.authService.logout();
-    this.router.navigateByUrl('login', { replaceUrl: true });
+    this.authService.logout();
+    // this.router.navigateByUrl('login', { replaceUrl: true });
+    // this.router.navigate(['login']);
   }
 }

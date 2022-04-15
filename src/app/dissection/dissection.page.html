@@ -11,11 +11,61 @@
   <div class="ion-padding">
     <div class="container">
       <div class="table">
-        <img class="frog" src="assets/img/frog-parts/{{currentFrogDisplay[0].filename}}">
+        <ion-slides pager="false" [options]="sliderOptions" #sliderWithNavigation
+          (ionSlideDidChange)="SlideDidChange(gallerySlider,sliderWithNavigation)">
+          <ion-slide>
+            <img class="frog" src="assets/img/frog-parts/{{currentFrogDisplay[0].filename}}">
+          </ion-slide>
+        </ion-slides>
       </div>
       <div class="description">
         <span class="h6 title">Instructions:</span>
-        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p class="desc">To start the virtual dissection, click the plus (+) button below. After that, click the pin (📌) then click the scalpel ( 🔪). To open the internal parts, click once again the Pin (📌)and then click 'NEXT' that will appear.</p>
+      </div>
+      <div class="tools">
+        <p class="h5 title">TOOLS</p>
+        <ion-row>
+          <img class="tool" src="assets/img/tools/forceps.png">
+          <div class="tool-desc">
+            <p class="h6 title">Forceps</p>
+            <p class="desc">Instruments that are used to grip and hold items. It is a set of essential tools that are commonly used in laboratory and clinical settings. They're made of steel or nylon, and the tips, or ends, come in a variety of shapes and sizes, including straight, curved, blunt, rat tooth, flat, and fine pointed.</p>
+          </div>
+        </ion-row>
+        <ion-row>
+          <img class="tool" src="assets/img/tools/scalpel.png">
+          <div class="tool-desc">
+            <p class="h6 title">Scalpel</p>
+            <p class="desc">Scalpel blades come in a variety of sizes, each of which serves a particular purpose, and have been used "for performing skin incisions, tissue dissections, and a variety of surgical methods since the beginning of 'modern' surgery."</p>
+          </div>
+        </ion-row>
+        <ion-row>
+          <img class="tool" src="assets/img/tools/scissors.png">
+          <div class="tool-desc">
+            <p class="h6 title">Scissors</p>
+            <p class="desc">It is use for cutting tissues.</p>
+          </div>
+        </ion-row>
+        <ion-row>
+          <img class="tool" src="assets/img/tools/needle.png">
+          <div class="tool-desc">
+            <p class="h6 title">Needle</p>
+            <p class="desc">Needles are used to dissect, separate, and manipulate tissue without tearing it. </p>
+          </div>
+        </ion-row>
+        <ion-row>
+          <img class="tool" src="assets/img/tools/magnifying-glass.png">
+          <div class="tool-desc">
+            <p class="h6 title">Magnifying Glass</p>
+            <p class="desc">Used for viewing materials up close with more details.</p>
+          </div>
+        </ion-row>
+        <ion-row>
+          <img class="tool" src="assets/img/tools/dissecting-spatula.png">
+          <div class="tool-desc">
+            <p class="h6 title">Dissecting Spatula</p>
+            <p class="desc">The dissecting spatula is used for extraction. It may also be used to keep tissues from recovering (as in keeping out of sight again) your subject.</p>
+          </div>
+        </ion-row>
       </div>
     </div>
   </div>

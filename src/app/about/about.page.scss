@@ -11,8 +11,15 @@ div.app-logo img {
     width: 60vw;
 } 
 
-span.about-app, span.app-version {
-    color: white;
+p.about-app, span.app-version, h5, h6 {
+    color: white !important;
+    width: 100%;
+    margin: 10px 0!important;
+    text-align: justify;
+}
+
+a {
+    color: #2fdf75 !important
 }
 
 span.app-version {

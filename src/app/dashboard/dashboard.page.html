@@ -39,6 +39,7 @@
           <ng-container *ngFor="let image of images; let i = index">
             <ion-col *ngIf="i<3">
               <img class="gallery-img" src="assets/img/gallery/{{ image.filename }}" (click)="showLightbox(image.id)">
+              <p class="name">{{ image.name }}</p>
             </ion-col>
           </ng-container>
         </ion-row>
@@ -46,6 +47,7 @@
           <ng-container *ngFor="let image of images; let i = index">
             <ion-col *ngIf="i>=3 && i<6">
               <img class="gallery-img" src="assets/img/gallery/{{ image.filename }}" (click)="showLightbox(image.id)">
+              <p class="name">{{ image.name }}</p>
             </ion-col>
           </ng-container>
         </ion-row>
