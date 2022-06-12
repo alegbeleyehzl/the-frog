@@ -251,8 +251,9 @@ ion-accordion.accordion-expanded > [slot=header] .ion-accordion-toggle-icon {
 }
 
 .topic-content strong {
-    color: #8EB0B9 !important;
+    // color: #8EB0B9 !important;
     letter-spacing: 0.5px !important;
+    color: #ffffff !important;
 }
 
 .topic-title strong {

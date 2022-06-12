@@ -9,8 +9,6 @@
     <ng-container *ngFor="let topic of topics; let i = index;" >
       <ion-item detail="false" [disabled]="i>0 && !topics[i-1].status">
         <ion-thumbnail slot="start">
-          <!-- <img *ngIf="topic.image != ''" src="assets/img/topics/{{topic.image}}">
-          <img *ngIf="topic.image == ''" src="assets/icon/topic.png"> -->
           <img src="assets/icon/topic.png">
         </ion-thumbnail>
             <ion-label class="ion-text-wrap">

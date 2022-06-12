@@ -78,7 +78,5 @@ export class ProfilePage implements OnInit {
 
   async logout() {
     this.authService.logout();
-    // this.router.navigateByUrl('login', { replaceUrl: true });
-    // this.router.navigate(['login']);
   }
 }

@@ -35,7 +35,6 @@ export class AssessmentPage implements OnInit {
   openTest( testType ){
     // testType 1 = pre-test, 2 = post-test;
     
-
     this.assessments.filter( (item) => {
       if( item.assessmentType == testType ){
 
